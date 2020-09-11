@@ -1,0 +1,11 @@
+{
+  "name": "json2csv",
+  "version": "0.1.0",
+  "description": "O objetivo do JSON2CSV é converter um texto no formato JSON para CSV",
+  "main": "json2csv.js",
+  "devDependencies": {
+    "standard": "^14.3.4"
+  },
+  "author": "raulfpl",
+  "license": "MIT"
+}
