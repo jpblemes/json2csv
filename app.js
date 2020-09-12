@@ -1,5 +1,5 @@
 /* eslint-env browser */
-import json2csv from './json2csv.mjs'
+import json2csv from './json2csv.js'
 
 const convBtn = document.getElementById('converter')
 const limpBtn = document.getElementById('limpar')
