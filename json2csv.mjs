@@ -7,7 +7,15 @@ const json2obj = json => {
   return Object.entries(parsed)
 }
 
-const array2csv = line => line.join()
+const array2csv = line => line.map(corrigeCelula).join()
+
+const corrigeCelula = cell => {
+  if (typeof cell === 'string') {
+    return '"' + cell.replace(/"/g, '""') + '"'
+  } else {
+    return cell
+  }
+}
 
 const matrix2csv = matrix => matrix.map(array2csv).join('\n')
 
