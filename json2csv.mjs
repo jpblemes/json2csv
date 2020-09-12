@@ -1,5 +1,5 @@
 // can throw SyntaxError
-const json2obj = json => {
+const json2matrix = json => {
   const parsed = JSON.parse(json)
   if (typeof parsed !== 'object' || Array.isArray(parsed)) { // TODO: implementar
     throw new Error('Não implementado')
@@ -19,6 +19,6 @@ const corrigeCelula = cell => {
 
 const matrix2csv = matrix => matrix.map(array2csv).join('\n')
 
-const json2csv = json => matrix2csv(json2obj(json))
+const json2csv = json => matrix2csv(json2matrix(json))
 
 export default json2csv
