@@ -10,7 +10,7 @@ const json2matrix = json => {
       addObjToMatrix(obj, mat)
     }
   } else {
-    addObjToMatrix(parsed, [])
+    addObjToMatrix(parsed, mat)
   }
   return mat
 }
