@@ -50,8 +50,10 @@ const addObjToMatrix = (obj, mat) => {
   return mat
 }
 
+/** transforma uma linha (Array) em uma linha csv */
 const array2csv = line => line.map(corrigeCelula).join()
 
+/** escapa caracteres especiais para o csv em strings  */
 const corrigeCelula = cell => {
   if (typeof cell === 'string') {
     return '"' + cell.replace(/"/g, '""') + '"'
