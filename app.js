@@ -2,6 +2,7 @@
 import json2csv from './json2csv.mjs'
 
 const convBtn = document.getElementById('converter')
+const limpBtn = document.getElementById('limpar')
 const salvBtn = document.getElementById('salvar')
 const jsonTxt = document.getElementById('json')
 const csvTxt = document.getElementById('csv')
@@ -28,6 +29,11 @@ const salvaArquivo = (nome, texto, mime) => {
     document.body.removeChild(a)
     window.URL.revokeObjectURL(url)
   }, 0)
+}
+
+limpBtn.onclick = function () {
+  jsonTxt.value = ''
+  csvTxt.value = ''
 }
 
 salvBtn.onclick = function () {
