@@ -62,6 +62,7 @@ limpBtn.onclick = function () {
   csvTxt.value = ''
   limpaErro()
   limpaCsv()
+  selExemplos.selectedIndex = 0
 }
 
 salvBtn.onclick = function () {
