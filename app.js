@@ -10,6 +10,7 @@ const alertErro = document.getElementById('alerta')
 const pMsgErro = document.getElementById('mensagem-erro')
 const selExemplos = document.getElementById('sel-exemplos')
 const h1Tabela = document.getElementById('titulo-tabela')
+const tabela = document.querySelector('table')
 
 convBtn.onclick = function () {
   try {
@@ -92,8 +93,6 @@ selExemplos.onchange = async function (event) {
   limpaCsv()
 }
 
-const tabela = document.querySelector('table')
-
 const mostraTabela = (mat) => {
   for (let i = 0; i < mat.length; i++) {
     const tr = document.createElement('tr')
@@ -105,10 +104,12 @@ const mostraTabela = (mat) => {
       cell.innerText = value
     }
   }
+  tabela.classList.remove('hidden')
   h1Tabela.classList.remove('hidden')
 }
 
 const limpaTabela = () => {
   tabela.innerHTML = ''
+  tabela.classList.add('hidden')
   h1Tabela.classList.add('hidden')
 }
