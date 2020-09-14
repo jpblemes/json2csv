@@ -9,8 +9,11 @@ const csvTxt = document.getElementById('csv')
 const alertErro = document.getElementById('alerta')
 const pMsgErro = document.getElementById('mensagem-erro')
 const selExemplos = document.getElementById('sel-exemplos')
-const h1Tabela = document.getElementById('titulo-tabela')
 const tabela = document.querySelector('table')
+const divTabela = document.getElementById('table-div')
+const divCodigo = document.getElementById('codigo')
+const btnTabTexto = document.getElementById('btn-tab-texto')
+const btnTabTabela = document.getElementById('btn-tab-tabela')
 
 convBtn.onclick = function () {
   try {
@@ -96,8 +99,8 @@ selExemplos.onchange = async function (event) {
 const mostraTabela = (mat) => {
   for (let i = 0; i < mat.length; i++) {
     const tr = document.createElement('tr')
-    if (i % 2 === 0) {
-      tr.classList.add('bg-white')
+    if (i % 2 === 0) { 
+      tr.classList.add('bg-gray-100')
     }
     tabela.appendChild(tr)
     for (const value of mat[i]) {
@@ -107,14 +110,12 @@ const mostraTabela = (mat) => {
       cell.innerText = value
     }
   }
-  tabela.classList.remove('hidden')
-  h1Tabela.classList.remove('hidden')
+  btnTabTabela.classList.remove('disabled')
 }
 
 const limpaTabela = () => {
   tabela.innerHTML = ''
-  tabela.classList.add('hidden')
-  h1Tabela.classList.add('hidden')
+  btnTabTabela.classList.add('disabled')
 }
 
 if ('serviceWorker' in navigator) {
@@ -127,4 +128,16 @@ if ('serviceWorker' in navigator) {
       console.log('ServiceWorker registration failed: ', err)
     })
   })
+}
+
+btnTabTabela.onclick = () => {
+  if (!btnTabTabela.classList.contains('disabled')) {
+    divTabela.classList.remove('hidden')
+    divCodigo.classList.add('hidden')
+  }
+}
+
+btnTabTexto.onclick = () => {
+  divTabela.classList.add('hidden')
+  divCodigo.classList.remove('hidden')
 }

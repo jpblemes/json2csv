@@ -26,10 +26,10 @@ h1 {
 }
 
 table {
-    @apply border table-auto block;
+    @apply table-auto block;
 }
 
-.table-div {
+#table-div {
     @apply max-h-screen overflow-auto;
 }
 
@@ -59,4 +59,23 @@ body {
 
 th {
     @apply text-left;
+}
+
+.tab {
+    @apply bg-white border-l border-t border-r rounded-t p-2
+}
+.tab-button {
+    @apply mr-1;
+}
+.tab-button.disabled {
+    @apply select-none;
+}
+.tab-button>a {
+    @apply cursor-pointer bg-white inline-block border-l border-b border-r rounded-b py-2 px-4 font-semibold text-blue-700;
+}
+.tab-button.disabled>a{
+    @apply cursor-default text-gray-400 
+}
+.tab-button.active {
+    @apply -mt-px
 }

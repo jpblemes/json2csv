@@ -17,7 +17,8 @@
       <span class="px-1 text-white font-semi truncate">Converte JSON para CSV</span>
     </div>
   </header>
-  <div class="container mx-auto px-4 py-2 mt-2">
+  <div class="container mx-auto px-4 py-2 mb-2">
+    <div id="codigo" class="tab">
     <label><span class="mr-1 py-1 inline-block">Exemplos:</span>
     <div class="inline-block relative min-w-0 sm:w-64 w-40">
       <select id="sel-exemplos">
@@ -48,12 +49,20 @@
       
       <button id="salvar" class="hidden truncate mb-1"><img class="inline mr-2" src="/img/get_app-24px.svg"></img>Salvar CSV</button>
       <textarea readonly id="csv" cols="30" rows="10" class="hidden"></textarea>
-      
-      <div class="table-div">
-        <h1 id="titulo-tabela" class="hidden text-gray-700 py-2">Tabela:</h1>
-        <table class="hidden"></table>
       </div>
     </div>
+    <div id="table-div" class="tab hidden pb-4">
+      <h1 id="titulo-tabela" class="text-gray-700 py-2">Tabela:</h1>
+      <table></table>
+    </div>
+    <ul class="flex border-t">
+      <li id="btn-tab-texto" class="tab-button active">
+        <a>Texto</a>
+      </li>
+      <li id="btn-tab-tabela" class="tab-button disabled">
+        <a>Tabela</a>
+      </li>
+    </ul>
   </div>
   <script src="/src/app.js" type="module"></script>
 </body>
