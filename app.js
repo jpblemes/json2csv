@@ -10,10 +10,12 @@ const csvTxt = document.getElementById('csv')
 convBtn.onclick = function () {
   try {
     csvTxt.value = json2csv(jsonTxt.value)
-    csvTxt.style.color = 'black'
+    csvTxt.classList.remove('text-red-500')
+    csvTxt.classList.add('text-black')
   } catch (error) {
     csvTxt.value = 'Erro:\n' + error.message
-    csvTxt.style.color = 'red'
+    csvTxt.classList.remove('text-black')
+    csvTxt.classList.add('text-red-500')
   }
 }
 
