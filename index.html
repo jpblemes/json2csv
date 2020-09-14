@@ -3,20 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+  <meta name="Description" content="Converte arquivos JSON para CSV.">
+  <link href="/dist/out.css" rel="stylesheet">
   <title>JSON2CSV</title>
 </head>
-<body class="bg-gray-100 text-gray-700 overflow-x-hidden">
-  <header class="bg-blue-500 py-2">
+<body>
+  <header class="bg-blue-700 py-2">
     <div class="container mx-auto px-4">
-      <h1 class="text-xl text-white font-bold inline-block">JSON2CSV</h1>
-      <span class="px-1 text-gray-200 font-semibold truncate">Converte JSON para CSV</span>
+      <h1 class="text-white">JSON2CSV</h1>
+      <span class="px-1 text-white font-semi truncate">Converte JSON para CSV</span>
     </div>
   </header>
   <div class="container mx-auto px-4 py-2 mt-2">
     <label><span class="mr-1 py-1 inline-block">Exemplos:</span>
     <div class="inline-block relative min-w-0 sm:w-64 w-40">
-      <select id="sel-exemplos" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+      <select id="sel-exemplos">
         <option disabled selected value>---</option>
         <option>pokedex.json</option>
         <option>servlet.json</option>
@@ -25,32 +26,31 @@
         <option>bitcoin-unconfirmed-transactions.json</option>
         <option>all-source-licenses-LT8xBfyS.json</option>
       </select>
-      <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-      </div>
+      <div class="icon"> <img src="/img/downarrow.svg" alt="downarrow"> </div>
     </div>
     </label>
     <div class="mt-1 py-2 py-2">
       <div>
-        <button id="converter" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded mb-2">Converter</button>
-        <button id="limpar" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded mb-2">Limpar</button>
+        <button id="converter">Converter</button>
+        <button id="limpar">Limpar</button>
       </div>
     </div>
-    <div class="container space-y-4">
-      <textarea id="json" cols="30" rows="10" placeholder="Cole o JSON aqui" class="placeholder-gray-600 w-full shadow appearance-none border rounded w-2/4 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
-      <div id="alerta" class="hidden bg-red-100 border-t border-b border-red-400 text-red-700 px-4 py-3" role="alert">
+    <div class="space-y-4">
+      <label><h1 class="mb-1">JSON:</h1>
+        <textarea id="json" cols="30" rows="10" placeholder="Cole o JSON aqui"></textarea>
+      </label>
+      <div id="alerta" class="alerta hidden" role="alert">
         <p class="font-bold">Erro:</p>
         <p class="text-sm" id="mensagem-erro">Some additional text to explain said message.</p>
       </div>
       
-      <button id="salvar" class="hidden bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded mb-2 truncate"><img class="inline mr-2" src="/img/cloud_download-black-24dp-outlined.svg"></img>Salvar CSV</button>
-      <textarea readonly id="csv" cols="30" rows="10" placeholder="Cole o JSON acima e pressione &quot;converter&quot;" class="hidden placeholder-gray-600 w-full shadow appearance-none border rounded w-2/4 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+      <button id="salvar" class="hidden truncate mb-1"><img class="inline mr-2" src="/img/cloud_download-black-24dp-outlined.svg"></img>Salvar CSV</button>
+      <textarea readonly id="csv" cols="30" rows="10" class="hidden"></textarea>
       
-      <h1 id="titulo-tabela" class="hidden text-xl text-gray-700 font-bold inline-block">Tabela:</h1>
-      <table class="hidden border container table-auto block max-h-screen overflow-auto">
-      </table>
+      <h1 id="titulo-tabela" class="hidden text-gray-700">Tabela:</h1>
+      <table class="hidden"></table>
     </div>
   </div>
-  <script src="app.js" type="module"></script>
+  <script src="/src/app.js" type="module"></script>
 </body>
 </html>
