@@ -52,3 +52,7 @@ select + .icon > img {
 body {
     @apply bg-gray-100 text-gray-700 overflow-x-hidden;
 }
+
+th {
+    @apply text-left;
+}
