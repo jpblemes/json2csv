@@ -1,5 +1,5 @@
 /* eslint-env serviceworker */
-var CACHE_NAME = 'my-site-cache-v1'
+var CACHE_NAME = 'my-site-cache-v2'
 var urlsToCache = [
   '/src/app.js',
   '/json_exemplos/all-source-licenses-LT8xBfyS.json',

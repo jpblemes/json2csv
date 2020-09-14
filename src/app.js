@@ -99,7 +99,7 @@ selExemplos.onchange = async function (event) {
 const mostraTabela = (mat) => {
   for (let i = 0; i < mat.length; i++) {
     const tr = document.createElement('tr')
-    if (i % 2 === 0) { 
+    if (i % 2 === 0) {
       tr.classList.add('bg-gray-100')
     }
     tabela.appendChild(tr)
@@ -133,11 +133,15 @@ if ('serviceWorker' in navigator) {
 btnTabTabela.onclick = () => {
   if (!btnTabTabela.classList.contains('disabled')) {
     divTabela.classList.remove('hidden')
+    btnTabTabela.classList.add('active')
     divCodigo.classList.add('hidden')
+    btnTabTexto.classList.remove('active')
   }
 }
 
 btnTabTexto.onclick = () => {
   divTabela.classList.add('hidden')
+  btnTabTabela.classList.remove('active')
   divCodigo.classList.remove('hidden')
+  btnTabTexto.classList.add('active')
 }
