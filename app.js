@@ -8,6 +8,7 @@ const jsonTxt = document.getElementById('json')
 const csvTxt = document.getElementById('csv')
 const alertErro = document.getElementById('alerta')
 const pMsgErro = document.getElementById('mensagem-erro')
+const selExemplos = document.getElementById('sel-exemplos')
 
 convBtn.onclick = function () {
   try {
@@ -17,12 +18,13 @@ convBtn.onclick = function () {
   } catch (error) {
     csvTxt.value = 'Erro:\n' + error.message
     mostraErro(error.message)
-    escondeCsv()
+    limpaCsv()
   }
 }
 
-const escondeCsv = () => {
+const limpaCsv = () => {
   csvTxt.classList.add('hidden')
+  csvTxt.value = ''
   salvBtn.classList.add('hidden')
 }
 
@@ -59,10 +61,22 @@ limpBtn.onclick = function () {
   jsonTxt.value = ''
   csvTxt.value = ''
   limpaErro()
-  escondeCsv()
+  limpaCsv()
 }
 
 salvBtn.onclick = function () {
   const text = csvTxt.value
   salvaArquivo('json2csv.csv', text, 'text/csv')
+}
+
+selExemplos.onchange = async function (event) {
+  const arquivo = '/json_exemplos/' + event.target.value
+  const res = await fetch(arquivo)
+  if (res.ok) {
+    jsonTxt.value = await (await res.blob()).text()
+    limpaErro()
+  } else {
+    mostraErro(res.statusText)
+  }
+  limpaCsv()
 }
