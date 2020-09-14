@@ -55,6 +55,9 @@ const array2csv = line => line.map(corrigeCelula).join()
 
 /** escapa caracteres especiais para o csv em strings  */
 const corrigeCelula = cell => {
+  if (typeof cell === 'object') {
+    cell = JSON.stringify(cell)
+  }
   if (typeof cell === 'string') {
     return '"' + cell.replace(/"/g, '""') + '"'
   } else {
