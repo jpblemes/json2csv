@@ -43,6 +43,10 @@ const addObjToMatrix = (obj, mat) => {
         mat[i].length++
       }
     }
+
+    if (typeof obj[key] === 'object') {
+      obj[key] = JSON.stringify(obj[key])
+    }
     novaLinha[newIdx] = obj[key]
   }
   novaLinha.length = mat[0].length
@@ -55,9 +59,6 @@ const array2csv = line => line.map(corrigeCelula).join()
 
 /** escapa caracteres especiais para o csv em strings  */
 const corrigeCelula = cell => {
-  if (typeof cell === 'object') {
-    cell = JSON.stringify(cell)
-  }
   if (typeof cell === 'string') {
     return '"' + cell.replace(/"/g, '""') + '"'
   } else {
@@ -69,4 +70,5 @@ const matrix2csv = matrix => matrix.map(array2csv).join('\n')
 
 const json2csv = json => matrix2csv(json2matrix(json))
 
+export { json2matrix, json2csv }
 export default json2csv

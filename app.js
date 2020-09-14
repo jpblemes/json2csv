@@ -1,5 +1,5 @@
 /* eslint-env browser */
-import json2csv from './json2csv.js'
+import { json2matrix, json2csv } from './json2csv.js'
 
 const convBtn = document.getElementById('converter')
 const limpBtn = document.getElementById('limpar')
@@ -9,15 +9,23 @@ const csvTxt = document.getElementById('csv')
 const alertErro = document.getElementById('alerta')
 const pMsgErro = document.getElementById('mensagem-erro')
 const selExemplos = document.getElementById('sel-exemplos')
+const h1Tabela = document.getElementById('titulo-tabela')
 
 convBtn.onclick = function () {
   try {
+    if (jsonTxt.value === '') {
+      throw new Error('JSON em branco')
+    }
     csvTxt.value = json2csv(jsonTxt.value)
     mostraCsv()
     limpaErro()
+    mostraTabela(json2matrix(jsonTxt.value))
   } catch (error) {
-    csvTxt.value = 'Erro:\n' + error.message
-    mostraErro(error.message)
+    let msg = ''
+    if (error instanceof SyntaxError) {
+      msg += 'JSON inválido\n'
+    }
+    mostraErro(msg + error.message)
     limpaCsv()
   }
 }
@@ -26,6 +34,8 @@ const limpaCsv = () => {
   csvTxt.classList.add('hidden')
   csvTxt.value = ''
   salvBtn.classList.add('hidden')
+
+  limpaTabela()
 }
 
 const mostraCsv = () => {
@@ -80,4 +90,25 @@ selExemplos.onchange = async function (event) {
     mostraErro(res.statusText)
   }
   limpaCsv()
+}
+
+const tabela = document.querySelector('table')
+
+const mostraTabela = (mat) => {
+  for (let i = 0; i < mat.length; i++) {
+    const tr = document.createElement('tr')
+    tabela.appendChild(tr)
+    for (const value of mat[i]) {
+      const cell = document.createElement(i === 0 ? 'th' : 'td')
+      cell.classList.add('border', 'px-4', 'py-2')
+      tr.appendChild(cell)
+      cell.innerText = value
+    }
+  }
+  h1Tabela.classList.remove('hidden')
+}
+
+const limpaTabela = () => {
+  tabela.innerHTML = ''
+  h1Tabela.classList.add('hidden')
 }
