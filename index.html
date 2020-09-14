@@ -13,9 +13,9 @@
       <span class="px-1 text-gray-200 font-semibold truncate">Converte JSON para CSV</span>
     </div>
   </header>
-  <div class="container mx-auto px-4 py-2 ">
+  <div class="container mx-auto px-4 py-2 mt-2">
     <label><span class="mr-1 py-1 inline-block">Exemplos:</span>
-    <div class="inline-block relative min-w-0 sm:w-64 w-40  ">
+    <div class="inline-block relative min-w-0 sm:w-64 w-40">
       <select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
         <option>1</option>
         <option>2</option>
@@ -24,13 +24,12 @@
       <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
       </div>
-    </label>
     </div>
-    <div class="py-2 py-2">
+    </label>
+    <div class="mt-1 py-2 py-2">
       <div>
         <button id="converter" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded mb-2">Converter</button>
         <button id="limpar" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded mb-2">Limpar</button>
-        <button id="salvar" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded mb-2 truncate">Salvar arquivo CSV</button>
       </div>
     </div>
     <div class="container space-y-4">
@@ -39,6 +38,8 @@
         <p class="font-bold">Erro:</p>
         <p class="text-sm" id="mensagem-erro">Some additional text to explain said message.</p>
       </div>
+      
+      <button id="salvar" class="hidden bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded mb-2 truncate"><img class="inline mr-2" src="/img/cloud_download-black-24dp-outlined.svg"></img>Salvar CSV</button>
       <textarea readonly id="csv" cols="30" rows="10" placeholder="Cole o JSON acima e pressione &quot;converter&quot;" class="hidden placeholder-gray-600 w-full shadow appearance-none border rounded w-2/4 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
     </div>
   </div>
