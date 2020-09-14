@@ -48,6 +48,8 @@ const salvaArquivo = (nome, texto, mime) => {
 limpBtn.onclick = function () {
   jsonTxt.value = ''
   csvTxt.value = ''
+  limpaErro()
+  csvTxt.classList.add('hidden')
 }
 
 salvBtn.onclick = function () {
