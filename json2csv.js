@@ -1,8 +1,8 @@
 /** @throws SyntaxError */
 const json2matrix = json => {
   const parsed = JSON.parse(json)
-  if (typeof parsed !== 'object') { // TODO: implementar
-    throw new Error('Não implementado')
+  if (typeof parsed !== 'object') {
+    return [[parsed]]
   }
   const mat = []
   if (Array.isArray(parsed)) {
