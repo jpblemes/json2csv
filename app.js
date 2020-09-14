@@ -12,13 +12,23 @@ const pMsgErro = document.getElementById('mensagem-erro')
 convBtn.onclick = function () {
   try {
     csvTxt.value = json2csv(jsonTxt.value)
-    csvTxt.classList.remove('hidden')
+    mostraCsv()
     limpaErro()
   } catch (error) {
     csvTxt.value = 'Erro:\n' + error.message
     mostraErro(error.message)
-    csvTxt.classList.add('hidden')
+    escondeCsv()
   }
+}
+
+const escondeCsv = () => {
+  csvTxt.classList.add('hidden')
+  salvBtn.classList.add('hidden')
+}
+
+const mostraCsv = () => {
+  csvTxt.classList.remove('hidden')
+  salvBtn.classList.remove('hidden')
 }
 
 const mostraErro = mensagem => {
@@ -49,10 +59,10 @@ limpBtn.onclick = function () {
   jsonTxt.value = ''
   csvTxt.value = ''
   limpaErro()
-  csvTxt.classList.add('hidden')
+  escondeCsv()
 }
 
 salvBtn.onclick = function () {
   const text = csvTxt.value
-  salvaArquivo('arquivo.csv', text, 'text/csv')
+  salvaArquivo('json2csv.csv', text, 'text/csv')
 }
