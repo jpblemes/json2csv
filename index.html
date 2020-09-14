@@ -6,7 +6,7 @@
   <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
   <title>JSON2CSV</title>
 </head>
-<body class="bg-gray-100 text-gray-700">
+<body class="bg-gray-100 text-gray-700 overflow-hidden">
   <header class="bg-blue-500 py-2">
     <div class="container mx-auto px-4">
       <h1 class="text-xl text-white font-bold inline-block">JSON2CSV</h1>
@@ -35,7 +35,11 @@
     </div>
     <div class="container space-y-4">
       <textarea id="json" cols="30" rows="10" placeholder="Cole o JSON aqui" class="placeholder-gray-600 w-full shadow appearance-none border rounded w-2/4 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
-      <textarea readonly id="csv" cols="30" rows="10" placeholder="Cole o JSON acima e pressione &quot;converter&quot;" class="placeholder-gray-600 w-full shadow appearance-none border rounded w-2/4 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+      <div id="alerta" class="hidden bg-red-100 border-t border-b border-red-400 text-red-700 px-4 py-3" role="alert">
+        <p class="font-bold">Erro:</p>
+        <p class="text-sm" id="mensagem-erro">Some additional text to explain said message.</p>
+      </div>
+      <textarea readonly id="csv" cols="30" rows="10" placeholder="Cole o JSON acima e pressione &quot;converter&quot;" class="hidden placeholder-gray-600 w-full shadow appearance-none border rounded w-2/4 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
     </div>
   </div>
   <script src="app.js" type="module"></script>
