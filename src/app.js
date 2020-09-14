@@ -96,6 +96,9 @@ selExemplos.onchange = async function (event) {
 const mostraTabela = (mat) => {
   for (let i = 0; i < mat.length; i++) {
     const tr = document.createElement('tr')
+    if (i % 2 === 0) {
+      tr.classList.add('bg-white')
+    }
     tabela.appendChild(tr)
     for (const value of mat[i]) {
       const cell = document.createElement(i === 0 ? 'th' : 'td')
