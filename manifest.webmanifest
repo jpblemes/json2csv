@@ -1,0 +1,20 @@
+{
+  "name": "JSON2CSV",
+  "short_name": "JSON2CSV",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#2b6cb0",
+  "background_color":"#2b6cb0",
+  "icons": [{
+    "src": "/img/icon.svg",
+    "sizes": "212x212"
+  },{
+    "src": "/img/icon-512.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  },{
+    "src": "/img/maskable.svg",
+    "sizes": "212x212",
+    "purpose": "maskable"
+  }]
+}
