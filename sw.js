@@ -1,7 +1,12 @@
 /* eslint-env serviceworker */
 var CACHE_NAME = 'my-site-cache-v1'
 var urlsToCache = [
-  '/src/app.js'
+  '/src/app.js',
+  '/json_exemplos/all-source-licenses-LT8xBfyS.json',
+  '/json_exemplos/bitcoin-unconfirmed-transactions.json',
+  '/json_exemplos/MOCK_DATA.json',
+  '/json_exemplos/pokedex.json',
+  '/json_exemplos/servlet.json'
 ]
 
 self.addEventListener('install', function (event) {
