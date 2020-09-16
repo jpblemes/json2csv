@@ -107,7 +107,7 @@ const mostraTabela = (mat) => {
       const cell = document.createElement(i === 0 ? 'th' : 'td')
       cell.classList.add('border', 'px-4', 'py-2')
       tr.appendChild(cell)
-      cell.innerText = value
+      cell.innerText = typeof value === 'undefined' ? '' : value
     }
   }
   btnTabTabela.classList.remove('disabled')
