@@ -1,12 +1,13 @@
 /* eslint-env serviceworker */
-var CACHE_NAME = 'my-site-cache-v2'
+var CACHE_NAME = 'my-site-cache-v11'
 var urlsToCache = [
   '/src/app.js',
   '/json_exemplos/all-source-licenses-LT8xBfyS.json',
   '/json_exemplos/bitcoin-unconfirmed-transactions.json',
   '/json_exemplos/MOCK_DATA.json',
   '/json_exemplos/pokedex.json',
-  '/json_exemplos/servlet.json'
+  '/json_exemplos/servlet.json',
+  '/dist/out.css'
 ]
 
 self.addEventListener('install', function (event) {
@@ -23,34 +24,27 @@ self.addEventListener('install', function (event) {
 self.addEventListener('fetch', function (event) {
   console.log('fetch')
   event.respondWith(
-    caches.match(event.request)
-      .then(function (response) {
-        // Cache hit - return response
-        if (response) {
-          return response
-        }
-
-        return fetch(event.request).then(
-          function (response) {
-            // Check if we received a valid response
-            if (!response || response.status !== 200 || response.type !== 'basic') {
-              return response
-            }
-
-            // IMPORTANT: Clone the response. A response is a stream
-            // and because we want the browser to consume the response
-            // as well as the cache consuming the response, we need
-            // to clone it so we have two streams.
-            var responseToCache = response.clone()
-
-            caches.open(CACHE_NAME)
-              .then(function (cache) {
-                cache.put(event.request, responseToCache)
-              })
-
-            return response
-          }
-        )
-      })
+    caches.open(CACHE_NAME).then(async function (cache) {
+      const response = await cache.match(event.request)
+      // Cache hit - return response
+      if (response) {
+        return response
+      }
+      const response1 = await fetch(event.request)
+      // Check if we received a valid response
+      if (!response1 || response1.status !== 200 || response1.type !== 'basic') {
+        return response1
+      }
+      // IMPORTANT: Clone the response. A response is a stream
+      // and because we want the browser to consume the response
+      // as well as the cache consuming the response, we need
+      // to clone it so we have two streams.
+      var responseToCache = response1.clone()
+      caches.open(CACHE_NAME)
+        .then(function (cache1) {
+          cache1.put(event.request, responseToCache)
+        })
+      return response1
+    })
   )
 })
