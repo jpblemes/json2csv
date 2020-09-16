@@ -1,5 +1,5 @@
 /* eslint-env serviceworker */
-var CACHE_NAME = 'my-site-cache-v11'
+var CACHE_NAME = 'my-site-cache-v18'
 var urlsToCache = [
   '/src/app.js',
   '/json_exemplos/all-source-licenses-LT8xBfyS.json',
@@ -7,7 +7,8 @@ var urlsToCache = [
   '/json_exemplos/MOCK_DATA.json',
   '/json_exemplos/pokedex.json',
   '/json_exemplos/servlet.json',
-  '/dist/out.css'
+  '/dist/out.css',
+  '/'
 ]
 
 self.addEventListener('install', function (event) {
@@ -45,6 +46,19 @@ self.addEventListener('fetch', function (event) {
           cache1.put(event.request, responseToCache)
         })
       return response1
+    })
+  )
+})
+
+self.addEventListener('activate', function (event) {
+  console.log('activate')
+  event.waitUntil(
+    caches.keys().then(function (cacheNames) {
+      console.log('cache purge ')
+      return Promise.all(
+        cacheNames.filter(cacheName => cacheName !== CACHE_NAME)
+          .map(cacheName => caches.delete(cacheName))
+      )
     })
   )
 })
