@@ -21,6 +21,7 @@ convBtn.onclick = function () {
       throw new Error('JSON em branco')
     }
     csvTxt.value = json2csv(jsonTxt.value)
+    limpaTabela()
     mostraCsv()
     limpaErro()
     mostraTabela(json2matrix(jsonTxt.value))
